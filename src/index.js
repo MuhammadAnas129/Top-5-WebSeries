@@ -1,30 +1,30 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import sData from './sData'
+import sData from './sData';
 import Card from './Card';
 
+const root = document.getElementById('root');
+const reactRoot = ReactDOM.createRoot(root);
 
-function ncard(val){
-
+function App() {
+  return (
+    <>
+      <h1>Top 5 Animated Series</h1>
+      {sData.map((val) => (
+        <Card
+          key={val.id} // Replace with a unique identifier if available
+          imgsrc={val.img}
+          type={val.type}
+          name={val.name}
+          studio={val.studios}
+          dateAired={val.dateAired}
+          status={val.status}
+          scr={val.scr}
+        />
+      ))}
+    </>
+  );
 }
 
-ReactDOM.render(
-  <>
-  <h1>Top 5 Animated Series</h1>
-
-  {sData.map((val)=>{
-    return(
-      <Card imgsrc={val.img}
-        name={val.name}
-        type={val.type}
-        Studio={val.Studio}
-        date={val.date_aired}
-        Status={val.Status}
-      />
-
-          )
-      })}
-  </>,
-  document.getElementById("root")
-)
+reactRoot.render(<App />);
